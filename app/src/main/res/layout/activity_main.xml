@@ -5,12 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="jsrb.com.workoutapp.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:layout_marginTop="65dp"
         android:contentDescription=""
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,9 +27,6 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginBottom="65dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp" />
+        tools:layout_constraintTop_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
