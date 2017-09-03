@@ -12,15 +12,16 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity {
 
     public boolean DEBUG = false;
-    Intent intent = new Intent(this, homepageActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final Intent intent = new Intent(this, homepageActivity.class);
 
-        //remove actionBar
-        getSupportActionBar().hide();
+        if (DEBUG == true) {
+            startActivity(intent);
+        }
 
         //wait a few seconds and then hide logo image and restore actionBar
         new CountDownTimer(3000,1000) {
