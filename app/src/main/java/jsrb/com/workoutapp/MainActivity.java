@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         //remove actionBar
         getSupportActionBar().hide();
 
-        if (DEBUG == true)
+        if (DEBUG)
         {
             toMenu();
         }
