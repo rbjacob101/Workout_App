@@ -1,13 +1,12 @@
 package jsrb.com.workoutapp;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-
-import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,12 +18,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Intent homepage = new Intent(this, homepageActivity.class);
 
+        //set action bar transparency
+        View window = getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setNavigationBarColor(Color.parseColor("#20111111"));
+        } else {
+            //older versions
+
+        }
+        window.setBackgroundColor(0xff3f51b5);
+
         if (DEBUG == true) {
             startActivity(homepage);
         }
 
         //wait a few seconds and then hide logo image and restore actionBar
-        new CountDownTimer(3000,1000) {
+        new CountDownTimer(2000,1000) {
             @Override
             public void onTick (long millisUntilFinished){}
 
