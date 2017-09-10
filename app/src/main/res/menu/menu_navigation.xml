@@ -3,15 +3,24 @@
 
     <item
         android:icon="@drawable/ic_action"
-        android:title="@string/home"
+        android:title=""
         />
     <item
-        android:icon="@drawable/ic_planner"
-        android:title="@string/planner"
+        android:icon="@drawable/ic_search"
+        android:title=""
         />
     <item
         android:icon="@drawable/ic_workout"
-        android:title="@string/workout"
+        android:title=""
         />
+    <item
+        android:icon="@drawable/ic_calendar"
+        android:title=""
+        />
+    <item
+        android:icon="@drawable/ic_account"
+        android:title=""
+        />
+
 
 </menu>

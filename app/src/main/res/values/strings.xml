@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="home">home</string>
-    <string name="planner">planner</string>
+    <string name="search">browse</string>
     <string name="workout">workout</string>
+    <string name="calendar">plan</string>
+    <string name="account">account</string>
 </resources>
