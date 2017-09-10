@@ -14,13 +14,12 @@ public class homepageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         //find screen background layout
-        View layout = (View) getWindow().getDecorView();
+        View layout = getWindow().getDecorView();
 
-        final int[] drawables = new int[4];
+        //define gradient colors to be used
+        int[] drawables = new int[2];
         drawables[0] = R.drawable.gradient_1;
         drawables[1] = R.drawable.gradient_2;
-        drawables[2] = R.drawable.gradient_3;
-        drawables[3] = R.drawable.gradient_4;
 
         gradientBackgroundPainter = new GradientBackgroundPainter(layout, drawables);
         gradientBackgroundPainter.start();
@@ -29,6 +28,12 @@ public class homepageActivity extends AppCompatActivity {
     @Override protected void onDestroy() {
         super.onDestroy();
         gradientBackgroundPainter.stop();
+    }
+
+
+    //do nothing if the user presses android back button
+    @Override public void onBackPressed() {
+        return;
     }
 
 }
