@@ -99,9 +99,7 @@ public class homepageActivity extends AppCompatActivity {
     }
 
     //do nothing if the user presses android back button
-    @Override public void onBackPressed() {
-        return;
-    }
+    @Override public void onBackPressed() {}
 
 }
 
