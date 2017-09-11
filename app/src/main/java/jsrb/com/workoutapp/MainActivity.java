@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish(){
                 startActivity(homepage);
             }
-
         }.start();
-
     }
 }
