@@ -6,7 +6,6 @@ import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 
 public class homepageActivity extends AppCompatActivity {
 
@@ -39,11 +38,7 @@ public class homepageActivity extends AppCompatActivity {
     public void springGradient (View view) {
         if (gradientOnSunset){
             final View layout = getWindow().getDecorView();
-            final View bg = ((ViewGroup) this
-                    .findViewById(android.R.id.content)).getChildAt(0);
-            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_1));
-            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(100);
+            final View bg = findViewById(R.id.bg);
 
             new CountDownTimer(100, 1000) {
                 @Override
@@ -66,17 +61,16 @@ public class homepageActivity extends AppCompatActivity {
 
                 }
             }.start();
+            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_1));
+            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
+            transition.startTransition(100);
         }
     }
 
     public void sunsetGradient (View view) {
         if (!gradientOnSunset) {
             final View layout = getWindow().getDecorView();
-            final View bg = ((ViewGroup) this
-                    .findViewById(android.R.id.content)).getChildAt(0);
-            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_2));
-            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(100);
+            final View bg = findViewById(R.id.bg);
 
             new CountDownTimer(100, 1000) {
                 @Override
@@ -98,6 +92,9 @@ public class homepageActivity extends AppCompatActivity {
                     sunsetGradientPainter.start();
                 }
             }.start();
+            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_2));
+            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
+            transition.startTransition(100);
         }
     }
 
