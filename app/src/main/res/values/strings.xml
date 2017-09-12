@@ -9,4 +9,6 @@
     <string name="workout">workout</string>
     <string name="calendar">plan</string>
     <string name="account">account</string>
+    <string name="sunset_theme">Sunset Theme</string>
+    <string name="night_theme">Night Theme</string>
 </resources>

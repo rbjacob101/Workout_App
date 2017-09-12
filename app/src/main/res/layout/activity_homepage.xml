@@ -5,9 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:design="http://schemas.android.com/apk/res-auto"
-    tools:context="jsrb.com.workoutapp.homepageActivity"
+    tools:context="jsrb.com.workoutapp.HomepageActivity"
     android:fitsSystemWindows="true">
 
+    <android.support.v4.view.ViewPager
+    android:id="@+id/viewpager"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bg"
@@ -26,7 +30,7 @@
             android:layout_marginRight="64dp"
             android:layout_marginTop="8dp"
             android:onClick="sunsetGradient"
-            android:text="Sunset Theme"
+            android:text="@string/sunset_theme"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -43,7 +47,7 @@
             android:layout_marginRight="64dp"
             android:layout_marginTop="185dp"
             android:onClick="springGradient"
-            android:text="Night Theme"
+            android:text="@string/night_theme"
             android:textAllCaps="false"
             app:layout_constraintHorizontal_bias="0.0"
             design:layout_constraintLeft_toLeftOf="parent"
@@ -56,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        design:menu="@menu/menu_navigation" />
+        design:menu="@menu/menu_navigation"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

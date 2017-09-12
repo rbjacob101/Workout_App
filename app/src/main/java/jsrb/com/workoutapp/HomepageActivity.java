@@ -3,11 +3,18 @@ package jsrb.com.workoutapp;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
-public class homepageActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomepageActivity extends FragmentActivity {
+
+    GlobalPageAdapter pageAdapter;
 
     private boolean gradientOnSunset = true;
     private GradientBackgroundPainter sunsetGradientPainter;
@@ -17,6 +24,14 @@ public class homepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        //fragment implementation
+        List<Fragment> fragments = getFragments();
+        pageAdapter = new GlobalPageAdapter(getSupportFragmentManager(), fragments);
+        ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+        pager.setAdapter(pageAdapter);
+
+        /*------------------------------------------------------------------------------------*/
 
         //find screen background layout
         View layout = getWindow().getDecorView();
@@ -28,14 +43,15 @@ public class homepageActivity extends AppCompatActivity {
 
         sunsetGradientPainter = new GradientBackgroundPainter(layout, sunsetGradient);
         sunsetGradientPainter.start();
-    }
 
+    }
 
     /*transitiontest_1 gradient from dynamic gradient 1 to dynamic gradient 2
     must be integrated into sliding between fragments and changing gradient theme
      */
 
-    public void springGradient (View view) {
+    //to integrate, remove (View view) and call as function
+    public void springGradient(View view) {
         if (gradientOnSunset){
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
@@ -67,6 +83,7 @@ public class homepageActivity extends AppCompatActivity {
         }
     }
 
+    //to integrate, remove (View view) and call as function
     public void sunsetGradient (View view) {
         if (!gradientOnSunset) {
             final View layout = getWindow().getDecorView();
@@ -101,6 +118,19 @@ public class homepageActivity extends AppCompatActivity {
     //do nothing if the user presses android back button
     @Override public void onBackPressed() {}
 
+    //getFragments method
+    //also where you add a new fragment into the sliding roster
+    private List<Fragment> getFragments(){
+
+        List<Fragment> fList = new ArrayList<>();
+
+        fList.add(MainFragment.newInstance("Fragment 1"));
+        fList.add(MainFragment.newInstance("Fragment 2"));
+        fList.add(MainFragment.newInstance("Fragment 3"));
+
+        return fList;
+
+    }
 }
 
 
