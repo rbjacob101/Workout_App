@@ -51,7 +51,7 @@ public class HomepageActivity extends FragmentActivity {
      */
 
     //to integrate, remove (View view) and call as function
-    public void springGradient(View view) {
+    public void springGradient() {
         if (gradientOnSunset){
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
@@ -84,7 +84,7 @@ public class HomepageActivity extends FragmentActivity {
     }
 
     //to integrate, remove (View view) and call as function
-    public void sunsetGradient (View view) {
+    public void sunsetGradient () {
         if (!gradientOnSunset) {
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
