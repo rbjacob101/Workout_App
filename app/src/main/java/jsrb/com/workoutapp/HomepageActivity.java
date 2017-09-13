@@ -125,7 +125,7 @@ public class HomepageActivity extends FragmentActivity {
         List<Fragment> fList = new ArrayList<>();
 
         fList.add(MainFragment.newInstance("Fragment 1"));
-        fList.add(MainFragment.newInstance("Fragment 2"));
+        fList.add(MainFragmentTwo.newInstance("Fragment 2"));
         fList.add(MainFragment.newInstance("Fragment 3"));
 
         return fList;
