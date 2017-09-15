@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 public class MainFragmentTwo extends Fragment {
 
+
     public static final String EXTRA_MESSAGE = "HELLO WORLD";
     public static MainFragmentTwo newInstance(String message) {
         MainFragmentTwo f = new MainFragmentTwo();

@@ -16,9 +16,9 @@ public class HomepageActivity extends FragmentActivity {
 
     GlobalPageAdapter pageAdapter;
 
-    private boolean gradientOnSunset = true;
-    private GradientBackgroundPainter sunsetGradientPainter;
-    private GradientBackgroundPainter springGradientPainter;
+    private boolean OnFragmentOneGradient = true;
+    private GradientBackgroundPainter fragmentOneGradientPainter;
+    private GradientBackgroundPainter fragmentTwoGradientPainter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,41 @@ public class HomepageActivity extends FragmentActivity {
         //fragment implementation
         List<Fragment> fragments = getFragments();
         pageAdapter = new GlobalPageAdapter(getSupportFragmentManager(), fragments);
-        ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+        final ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
         pager.setAdapter(pageAdapter);
+
+        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            //checks for when user swipes tabs and then checks for what tab they swiped to and sets gradient schema
+            @Override
+            public void onPageSelected(int arg0) {
+
+                // switch-case for what tab user is on
+                switch (pager.getCurrentItem()) {
+                    case 0:
+                        //fragment 1
+                        fragmentOneGradient();
+                        break;
+                    case 1:
+                        //fragment 2
+                        fragmentTwoGradient();
+                        break;
+                    case 2:
+                        //fragment 3
+                        fragmentOneGradient();
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                // disregard
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                // disregard
+            }
+        });
 
         /*------------------------------------------------------------------------------------*/
 
@@ -41,8 +74,8 @@ public class HomepageActivity extends FragmentActivity {
         sunsetGradient[0] = R.drawable.gradient_1;
         sunsetGradient[1] = R.drawable.gradient_2;
 
-        sunsetGradientPainter = new GradientBackgroundPainter(layout, sunsetGradient);
-        sunsetGradientPainter.start();
+        fragmentOneGradientPainter = new GradientBackgroundPainter(layout, sunsetGradient);
+        fragmentOneGradientPainter.start();
 
     }
 
@@ -50,68 +83,66 @@ public class HomepageActivity extends FragmentActivity {
     must be integrated into sliding between fragments and changing gradient theme
      */
 
-    //to integrate, remove (View view) and call as function
-    public void springGradient() {
-        if (gradientOnSunset){
+    public void fragmentOneGradient() {
+        if (!OnFragmentOneGradient) {
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
 
-            new CountDownTimer(100, 1000) {
+            new CountDownTimer(170, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
 
                 @Override
                 public void onFinish() {
-                    sunsetGradientPainter.stop();
-                    gradientOnSunset = false;
+                    fragmentTwoGradientPainter.stop();
+                    OnFragmentOneGradient = true;
 
                     bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient_transparent));
 
-                    int[] springGradient = new int[2];
-                    springGradient[0] = R.drawable.gradient_3;
-                    springGradient[1] = R.drawable.gradient_4;
+                    int[] fragmentOneGradient = new int[2];
+                    fragmentOneGradient[0] = R.drawable.gradient_1;
+                    fragmentOneGradient[1] = R.drawable.gradient_2;
 
-                    springGradientPainter = new GradientBackgroundPainter(layout, springGradient);
-                    springGradientPainter.start();
+                    fragmentOneGradientPainter = new GradientBackgroundPainter(layout, fragmentOneGradient);
+                    fragmentOneGradientPainter.start();
+                }
+            }.start();
+            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_2));
+            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
+            transition.startTransition(170);
+        }
+    }
+
+    public void fragmentTwoGradient() {
+        if (OnFragmentOneGradient){
+            final View layout = getWindow().getDecorView();
+            final View bg = findViewById(R.id.bg);
+
+            new CountDownTimer(170, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
+
+                @Override
+                public void onFinish() {
+                    fragmentOneGradientPainter.stop();
+                    OnFragmentOneGradient = false;
+
+                    bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient_transparent));
+
+                    int[] fragmentTwoGradient = new int[2];
+                    fragmentTwoGradient[0] = R.drawable.gradient_3;
+                    fragmentTwoGradient[1] = R.drawable.gradient_4;
+
+                    fragmentTwoGradientPainter = new GradientBackgroundPainter(layout, fragmentTwoGradient);
+                    fragmentTwoGradientPainter.start();
 
                 }
             }.start();
             bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_1));
             TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(100);
-        }
-    }
-
-    //to integrate, remove (View view) and call as function
-    public void sunsetGradient () {
-        if (!gradientOnSunset) {
-            final View layout = getWindow().getDecorView();
-            final View bg = findViewById(R.id.bg);
-
-            new CountDownTimer(100, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                }
-
-                @Override
-                public void onFinish() {
-                    springGradientPainter.stop();
-                    gradientOnSunset = true;
-
-                    bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient_transparent));
-
-                    int[] sunsetGradient = new int[2];
-                    sunsetGradient[0] = R.drawable.gradient_1;
-                    sunsetGradient[1] = R.drawable.gradient_2;
-
-                    sunsetGradientPainter = new GradientBackgroundPainter(layout, sunsetGradient);
-                    sunsetGradientPainter.start();
-                }
-            }.start();
-            bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_2));
-            TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(100);
+            transition.startTransition(170);
         }
     }
 
@@ -129,7 +160,6 @@ public class HomepageActivity extends FragmentActivity {
         fList.add(MainFragment.newInstance("Fragment 3"));
 
         return fList;
-
     }
 }
 

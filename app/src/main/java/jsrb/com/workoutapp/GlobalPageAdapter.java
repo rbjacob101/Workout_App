@@ -28,4 +28,6 @@ public class GlobalPageAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return this.fragments.size();
     }
+
+
 }
