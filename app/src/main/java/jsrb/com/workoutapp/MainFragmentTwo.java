@@ -27,7 +27,7 @@ public class MainFragmentTwo extends Fragment {
                              Bundle savedInstanceState) {
 
         String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.mainfragment_two_layout, container, false);
+        View v = inflater.inflate(R.layout.fragment_two_layout, container, false);
         return v;
     }
 }

@@ -27,7 +27,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.mainfragment_layout, container, false);
+        View v = inflater.inflate(R.layout.fragment_one_layout, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.textView);
         messageTextView.setText(message);
         return v;
