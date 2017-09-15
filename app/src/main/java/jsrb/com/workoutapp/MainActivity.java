@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         //set action bar transparency
         View window = getWindow().getDecorView();
 
+        //TODO add a variable that controls the starting gradient app-wide
         Drawable gradient = ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient_1);
         window.setBackground(gradient);
 
