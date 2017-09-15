@@ -25,10 +25,12 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         String message = getArguments().getString(EXTRA_MESSAGE);
         View v = inflater.inflate(R.layout.mainfragment_layout, container, false);
         TextView messageTextView = (TextView)v.findViewById(R.id.textView);
         messageTextView.setText(message);
         return v;
+
     }
 }
