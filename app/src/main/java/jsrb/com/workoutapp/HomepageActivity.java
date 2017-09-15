@@ -16,6 +16,9 @@ public class HomepageActivity extends FragmentActivity {
 
     GlobalPageAdapter pageAdapter;
 
+    //set time in milliseconds for gradient transition between tabs
+    public int transTime = 150;
+
     private boolean OnFragmentOneGradient = true;
     private GradientBackgroundPainter fragmentOneGradientPainter;
     private GradientBackgroundPainter fragmentTwoGradientPainter;
@@ -88,7 +91,7 @@ public class HomepageActivity extends FragmentActivity {
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
 
-            new CountDownTimer(170, 1000) {
+            new CountDownTimer(transTime, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
@@ -110,7 +113,7 @@ public class HomepageActivity extends FragmentActivity {
             }.start();
             bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_2));
             TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(170);
+            transition.startTransition(transTime);
         }
     }
 
@@ -119,7 +122,7 @@ public class HomepageActivity extends FragmentActivity {
             final View layout = getWindow().getDecorView();
             final View bg = findViewById(R.id.bg);
 
-            new CountDownTimer(170, 1000) {
+            new CountDownTimer(transTime, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
@@ -142,7 +145,7 @@ public class HomepageActivity extends FragmentActivity {
             }.start();
             bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.transitiontest_1));
             TransitionDrawable transition = (TransitionDrawable) bg.getBackground();
-            transition.startTransition(170);
+            transition.startTransition(transTime);
         }
     }
 
