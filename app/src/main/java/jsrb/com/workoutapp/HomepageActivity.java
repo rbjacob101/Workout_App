@@ -23,6 +23,10 @@ public class HomepageActivity extends FragmentActivity {
     private GradientBackgroundPainter fragmentOneGradientPainter;
     private GradientBackgroundPainter fragmentTwoGradientPainter;
 
+    public final static int PAGES = 3;
+    public final static int LOOPS = 1000;
+    public final static int FIRST_PAGE = PAGES * LOOPS / 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,8 @@ public class HomepageActivity extends FragmentActivity {
         pageAdapter = new GlobalPageAdapter(getSupportFragmentManager(), fragments);
         final ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
         pager.setAdapter(pageAdapter);
+        pager.setCurrentItem(FIRST_PAGE);
+
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             //checks for when user swipes tabs and then checks for what tab they swiped to and sets gradient schema
@@ -40,7 +46,7 @@ public class HomepageActivity extends FragmentActivity {
             public void onPageSelected(int arg0) {
 
                 // switch-case for what tab user is on
-                switch (pager.getCurrentItem()) {
+                switch (pager.getCurrentItem()%3) {
                     case 0:
                         //fragment 1
                         fragmentOneGradient();
@@ -66,8 +72,6 @@ public class HomepageActivity extends FragmentActivity {
                 // disregard
             }
         });
-
-        /*------------------------------------------------------------------------------------*/
 
         //find screen background layout
         View layout = getWindow().getDecorView();

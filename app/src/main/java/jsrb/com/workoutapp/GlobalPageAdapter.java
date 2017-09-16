@@ -21,13 +21,21 @@ public class GlobalPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return this.fragments.get(position);
+        position = position % HomepageActivity.PAGES;
+
+        switch (position) {
+            case 0:
+                return MainFragment.newInstance("frag 1");
+            case 1:
+                return MainFragmentTwo.newInstance("frag 2");
+            case 2:
+                return MainFragment.newInstance("frag 3");
+        }
+        return null;
     }
 
     @Override
     public int getCount() {
-        return this.fragments.size();
+        return HomepageActivity.PAGES * HomepageActivity.LOOPS;
     }
-
-
 }
