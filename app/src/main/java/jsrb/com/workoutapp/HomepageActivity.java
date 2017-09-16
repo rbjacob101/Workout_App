@@ -77,9 +77,11 @@ public class HomepageActivity extends FragmentActivity {
         View layout = getWindow().getDecorView();
 
         //define gradient colors to be used
-        int[] sunsetGradient = new int[2];
+        int[] sunsetGradient = new int[4];
         sunsetGradient[0] = R.drawable.gradient_1;
         sunsetGradient[1] = R.drawable.gradient_2;
+        sunsetGradient[2] = R.drawable.gradient_5;
+        sunsetGradient[3] = R.drawable.gradient_6;
 
         fragmentOneGradientPainter = new GradientBackgroundPainter(layout, sunsetGradient);
         fragmentOneGradientPainter.start();
@@ -107,9 +109,11 @@ public class HomepageActivity extends FragmentActivity {
 
                     bg.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gradient_transparent));
 
-                    int[] fragmentOneGradient = new int[2];
+                    int[] fragmentOneGradient = new int[4];
                     fragmentOneGradient[0] = R.drawable.gradient_1;
                     fragmentOneGradient[1] = R.drawable.gradient_2;
+                    fragmentOneGradient[2] = R.drawable.gradient_5;
+                    fragmentOneGradient[3] = R.drawable.gradient_6;
 
                     fragmentOneGradientPainter = new GradientBackgroundPainter(layout, fragmentOneGradient);
                     fragmentOneGradientPainter.start();
